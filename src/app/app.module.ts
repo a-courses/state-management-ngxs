@@ -10,6 +10,8 @@ import {NgxsModule} from "@ngxs/store";
 import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 import {TeamState} from "./store/states/team.state";
+import {TeamsFormComponent} from "./team/teams-form/teams-form.component";
+import {TeamsDetailsViewComponent} from "./team/teams-details-view/teams-details-view.component";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -17,7 +19,9 @@ import {TeamState} from "./store/states/team.state";
     AppComponent,
     HeaderComponent,
     UserComponent,
-    SubHeaderComponent
+    SubHeaderComponent,
+    TeamsFormComponent,
+    TeamsDetailsViewComponent
   ],
   bootstrap: [AppComponent],
   imports: [
