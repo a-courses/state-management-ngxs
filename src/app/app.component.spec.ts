@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'edesign-sb-v2' title`, () => {
+  it(`should have the 'NGXS Demo' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('edesign-sb-v2');
+    expect(app.title).toEqual('NGXS Demo');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, edesign-sb-v2');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, NGXS Demo');
   });
 });

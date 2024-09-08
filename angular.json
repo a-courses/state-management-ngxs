@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "edesign-sb-v2": {
+    "ngxs-se-webui-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/edesign-sb-v2",
+            "outputPath": "dist/ngxs-se-webui-demo",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "edesign-sb-v2:build:production"
+              "buildTarget": "ngxs-se-webui-demo:build:production"
             },
             "development": {
-              "buildTarget": "edesign-sb-v2:build:development"
+              "buildTarget": "ngxs-se-webui-demo:build:development"
             }
           },
           "defaultConfiguration": "development"

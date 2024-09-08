@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'edesign-sb-v2';
+  title = 'NGXS and seWEB UI';
 }
