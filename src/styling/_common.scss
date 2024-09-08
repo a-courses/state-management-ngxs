@@ -1,0 +1,80 @@
+:root {
+  --app-power-limited: #{$se-sky-blue};
+  --app-power-monitored: #{$se-sunflower-yellow};
+  --app-power-separator: #{$se-anthracite-grey};
+  --app-home-new-tile-background: #{$se-transparent-grey};
+  --app-home-new-tile-color: #{$se-white};
+}
+
+.se-app-body {
+  @include background-color('background-alternative');
+}
+
+.page-content {
+  display: block;
+  width: layout-width();
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+
+  &.full-width {
+    width: 100%;
+
+    @include breakpoint-lt(layout-width(medium), 0) {
+      width: layout-width(medium);
+    }
+  }
+}
+
+// Fix quartz (once again)
+// This override prevents Chrome from repainting the page when the scroll is active
+se-container {
+  overflow-y: scroll;
+}
+
+.droppable.hovered {
+  @include background-color('secondary');
+}
+
+.draggable {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  // Fix quartz (once again)
+  &.dragged se-dropdown se-list {
+    display: none !important;
+  }
+}
+
+.icon {
+  font-family: $se-icon-family;
+  font-size: $spacing-mlarge;
+  line-height: $spacing-mlarge;
+  text-transform: none;
+  overflow: hidden;
+
+  @each $name, $size in $icon-size-map {
+    &.#{$name} {
+      font-size: $size;
+      line-height: $size;
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+}
+
+// FIXME: this parent selector has to be removed at some point when
+// we decide to refacto link styles at the application global level.
+se-sidemenu-item {
+  a,
+  .link {
+    @include color('information');
+
+    cursor: pointer;
+  }
+}

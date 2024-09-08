@@ -1,0 +1,211 @@
+@import './variables';
+
+// Breakpoint mixins
+
+@mixin breakpoint-lt($width, $margin: $layout-scrollbar-size) {
+  @media screen and (max-width: $width + $margin - 1) {
+    @content;
+  }
+}
+
+@mixin breakpoint-gt($width, $margin: $layout-scrollbar-size) {
+  @media screen and (min-width: $width + $margin) {
+    @content;
+  }
+}
+
+@mixin breakpoint-slice(
+  $min-width,
+  $max-width,
+  $margin: $layout-scrollbar-size
+) {
+  @media screen and (min-width: $min-width + $margin) and (max-width: $max-width + $margin - 1) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xs() {
+  @include breakpoint-lt(layout-width(small)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-sm() {
+  @include breakpoint-slice(layout-width(small), layout-width(medium)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md() {
+  @include breakpoint-slice(layout-width(medium), layout-width(large)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lg() {
+  @include breakpoint-slice(layout-width(large), layout-width(xlarge)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xl() {
+  @include breakpoint-gt(layout-width(xlarge)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lt-sm() {
+  @include breakpoint-lt(layout-width(small)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lt-md() {
+  @include breakpoint-lt(layout-width(medium)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lt-lg() {
+  @include breakpoint-lt(layout-width(large)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lt-xl() {
+  @include breakpoint-lt(layout-width(xlarge)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-gt-xs() {
+  @include breakpoint-gt(layout-width(small)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-gt-sm() {
+  @include breakpoint-gt(layout-width(medium)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-gt-md() {
+  @include breakpoint-gt(layout-width(large)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-gt-lg() {
+  @include breakpoint-gt(layout-width(xlarge)) {
+    @content;
+  }
+}
+
+// Flex mixins
+
+@mixin flex-layout(
+  $direction: row,
+  $align: normal,
+  $justify: normal,
+  $gutter: null,
+  $gutter-mode: margin,
+  $flex-children: null
+) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+
+  /* stylelint-disable-next-line scss/at-if-no-null */
+  @if $gutter != null {
+    @include flex-gutter($gutter, $gutter-mode, $direction);
+  }
+
+  /* stylelint-disable-next-line scss/at-if-no-null */
+  @if $flex-children != null {
+    @include flex-children($flex-children);
+  }
+
+  @content;
+}
+
+// Flex row layout mixin
+// justify = $h, align = $v
+@mixin flex-row-layout(
+  $reverse: false,
+  $h: normal,
+  $v: normal,
+  $gutter: null,
+  $gutter-mode: margin,
+  $flex-children: null
+) {
+  @include flex-layout(
+    if($reverse == true, row-reverse, row),
+    $v,
+    $h,
+    $gutter,
+    $gutter-mode,
+    $flex-children
+  ) {
+    @content;
+  }
+}
+
+// Flex column layout mixin
+// align = $h, justify = $v
+@mixin flex-column-layout(
+  $reverse: false,
+  $h: normal,
+  $v: normal,
+  $gutter: null,
+  $gutter-mode: margin,
+  $flex-children: null
+) {
+  @include flex-layout(
+    if($reverse == true, column-reverse, column),
+    $h,
+    $v,
+    $gutter,
+    $gutter-mode,
+    $flex-children
+  ) {
+    @content;
+  }
+}
+
+@mixin flex-gutter($gutter, $gutter-mode: margin, $direction: row) {
+  @if $direction == row or $direction == row-reverse {
+    > * {
+      #{$gutter-mode}-right: $gutter;
+
+      &:last-child {
+        #{$gutter-mode}-right: 0;
+      }
+    }
+  } @else if $direction == column or $direction == column-reverse {
+    > * {
+      #{$gutter-mode}-bottom: $gutter;
+
+      &:last-child {
+        #{$gutter-mode}-bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin flex-children($flex: 0 1 auto) {
+  > * {
+    flex: $flex;
+  }
+}
+
+// Misc  mixins
+
+@mixin absolute-cover() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

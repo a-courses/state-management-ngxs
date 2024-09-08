@@ -1,0 +1,29 @@
+<h3>Add Teams details</h3>
+<form>
+  <se-form-field id="input-stacked-form" label="Input" required="true" option="stacked">
+    <input type="text"/>
+  </se-form-field>
+  <se-form-field id="select-form" label="Select" required="true" type="select" option="stacked">
+    <select>
+      <option>Stacked Option 1</option>
+      <option>Stacked Option 2</option>
+      <option>Stacked Option 3</option>
+    </select>
+  </se-form-field>
+  <se-form-field label="Input with icon" option="stacked">
+    <div class="with-icon">
+      <input type="search"/>
+      <se-icon size="small" style="margin-left:4px">action_search_stroke</se-icon>
+    </div>
+  </se-form-field>
+  <se-form-field label="Autocomplete" option="stacked">
+    <input list="marketSegmentList"/>
+    <datalist id="marketSegmentList">
+      <option value="react"></option>
+      <option value="stenciljs"></option>
+      <option value="angular"></option>
+      <option value="vuejs"></option>
+    </datalist>
+  </se-form-field>
+  <se-button color="primary">Save</se-button>
+</form>

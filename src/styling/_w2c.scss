@@ -1,0 +1,14 @@
+// override to prevent usage of /deep/ in the component
+.w2c-form {
+  a {
+    @include color('secondary');
+  }
+
+  strong {
+    @include background-color('primary');
+    @include color('primary-contrast');
+
+    display: inline-block;
+    padding: $spacing-small $spacing;
+  }
+}

@@ -1,0 +1,31 @@
+.toast {
+  &-container {
+    top: 165px;
+    right: 10px;
+    pointer-events: none;
+    position: fixed;
+    z-index: 999999;
+  }
+
+  &-info {
+    @include background-color('standard');
+    @include color('standard-contrast');
+  }
+
+  &-success {
+    @include background-color('success');
+    @include color('success-contrast');
+  }
+
+  &-warning {
+    @include background-color('warning');
+    @include color(
+      'error-contrast'
+    ); // warning-contrast is black, using error-contrast instead
+  }
+
+  &-error {
+    @include background-color('error');
+    @include color('error-contrast');
+  }
+}

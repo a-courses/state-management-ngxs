@@ -1,0 +1,4 @@
+.swb-editor > se-loading {
+  // Because now we handle the loader on our side, prevent double indicator.
+  display: none !important;
+}
