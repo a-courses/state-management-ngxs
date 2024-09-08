@@ -1,0 +1,52 @@
+@forward 'sass:math';
+
+/* stylelint-disable-next-line no-invalid-position-at-import-rule */
+@import '@se/web-ui/styles/theme';
+
+$new630-icon-font-family: 'new630-icon';
+$new630-icon-font-path: '/assets/fonts';
+$dialog-title-font-size: 20px;
+$font-weights: (
+  'normal': normal,
+  'ultra-light': 200,
+  'light': 300,
+  'light-medium': 400,
+  'medium': 500,
+  'medium-bold': 600,
+  'bold': 700
+);
+
+@function font-weight($key: light) {
+  $weight: map_get($font-weights, $key);
+
+  /* stylelint-disable scss/at-if-no-null */
+  @if $weight == null {
+    $weight: $key;
+  }
+
+  @return $weight;
+}
+
+// Page widths for responsive layout (material-based)
+$layout-widths: (
+  'small': 960px,
+  'medium': 1200px,
+  'large': 1660px,
+  'xlarge': 1920px
+);
+$layout-scrollbar-size: 20px;
+
+@function layout-width($key: medium, $margin: 0) {
+  /* stylelint-disable scss/no-global-function-names */
+  @return map-get($layout-widths, $key) - $margin;
+}
+
+// Icon sizes
+$icon-size-map: (
+  'nano': 14px,
+  'micro': 18px,
+  'small': 24px,
+  'medium': 32px,
+  'large': 52px,
+  'xlarge': 62px
+);

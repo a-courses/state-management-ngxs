@@ -1,0 +1,61 @@
+// Patch Quartz to make it work on Safari.
+
+/* stylelint-disable-next-line media-feature-name-no-vendor-prefix */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: $se-icon-family;
+    font-weight: normal;
+    font-style: normal;
+    src:
+      url('#{$se-icon-folder}/#{$se-icon-family}.woff2') format('woff2'),
+      url('#{$se-icon-folder}/#{$se-icon-family}.woff') format('woff'),
+      url('#{$se-icon-folder}/#{$se-icon-family}.ttf') format('truetype'),
+      url('#{$se-icon-folder}/#{$se-icon-family}.svg##{$se-icon-family}')
+        format('svg');
+  }
+}
+
+@font-face {
+  font-family: '#{$new630-icon-font-family}';
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url('#{$new630-icon-font-path}/#{$new630-icon-font-family}.eot');
+  src:
+    url('#{$new630-icon-font-path}/#{$new630-icon-font-family}.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$new630-icon-font-path}/#{$new630-icon-font-family}.woff2')
+      format('woff2'),
+    url('#{$new630-icon-font-path}/#{$new630-icon-font-family}.woff')
+      format('woff'),
+    url('#{$new630-icon-font-path}/#{$new630-icon-font-family}.ttf')
+      format('truetype'),
+    url('#{$new630-icon-font-path}/#{$new630-icon-font-family}.svg##{$new630-icon-font-family}')
+      format('svg');
+}
+
+.n630-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$new630-icon-font-family}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  /* stylelint-disable property-no-vendor-prefix */
+  -webkit-font-feature-settings: 'liga';
+  -moz-font-feature-settings: 'liga';
+  -ms-font-feature-settings: 'liga' 1;
+  font-feature-settings: 'liga';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* stylelint-enable property-no-vendor-prefix */
+}

@@ -1,0 +1,25 @@
+@import './theme';
+
+.validation-errors {
+  @include flex-column-layout;
+
+  margin-left: 35%;
+  padding: 0 $spacing;
+
+  // override to prevent usage of /deep/
+  .no-margin & {
+    margin-left: 0;
+  }
+
+  .validation-error {
+    @include color('error');
+
+    font-size: $small-fontsize;
+
+    &::before {
+      content: 'notification_error_plain';
+      font-family: $se-icon-family; // stylelint-disable-line font-family-no-missing-generic-family-keyword
+      vertical-align: baseline;
+    }
+  }
+}

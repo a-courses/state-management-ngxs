@@ -1,0 +1,46 @@
+// override to prevent usage of /deep/ in the component
+
+app-radio.power-range {
+  .radio-icon {
+    display: block;
+    position: relative;
+    width: $spacing-xlarge;
+    height: $spacing-xlarge;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    &::before {
+      height: 14.0625%;
+      bottom: 0;
+    }
+
+    &::after {
+      background-color: var(--app-power-separator);
+      height: 1.5625%;
+      bottom: 14.0625%;
+    }
+
+    app-icon {
+      @include flex-row-layout($h: center, $v: center);
+
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      padding-bottom: 15.625%;
+    }
+  }
+
+  &[icon='limited'] .radio-icon::before {
+    background-color: var(--app-power-limited);
+  }
+
+  &[icon='monitored'] .radio-icon::before {
+    background-color: var(--app-power-monitored);
+  }
+}
